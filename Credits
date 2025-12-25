@@ -1,0 +1,24 @@
+let credits = 5;
+
+function generate() {
+    const prompt = document.getElementById('prompt').value;
+    const output = document.getElementById('output');
+    const creditSpan = document.getElementById('credits');
+
+    if (credits <= 0) {
+        alert("Out of credits!");
+        return;
+    }
+
+    if (!prompt) return alert("Enter a prompt!");
+
+    output.innerHTML = "✨ AI is thinking...";
+    
+    // Simulating AI Image Generation for now
+    setTimeout(() => {
+        credits--;
+        creditSpan.innerText = credits;
+        // In a real app, you'd fetch from OpenAI/Gemini API here
+        output.innerHTML = `<img src="https://picsum.photos/seed/${prompt}/400" class="w-full h-full object-cover">`;
+    }, 2000);
+}
